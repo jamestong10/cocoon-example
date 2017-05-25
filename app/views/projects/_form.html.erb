@@ -1,0 +1,19 @@
+<%= semantic_form_for @project do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+  <% end %>
+  <h3> Tasks </h3>
+  <div id="tasks">
+    <%= f.semantic_fields_for :tasks do |task| %>
+      <%= render 'task_fields', f: task %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add task', f, :tasks %>
+    </div>
+  </div>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button %>
+  <% end %>
+<% end %>
